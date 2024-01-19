@@ -1,0 +1,54 @@
+﻿@*
+    Delete
+*@
+@model Film
+
+<h1 class="alert alert-danger text-center">Are you sure you want to delete @Model.Name?</h1>
+
+<div class="row">
+    <dl class="row col-6">
+
+        <br />
+        <hr />
+
+        <dt class="col-2">@Html.DisplayNameFor(e=>e.Name)</dt>
+        <dd class="col-10">@Html.DisplayFor(e=>e.Name)</dd>
+        @*<dd class="col-10">@Model.Name</dd>*@
+        
+        <br />
+        <hr />
+
+        <dt class="col-2">@Html.DisplayNameFor(e => e.Genres)</dt>
+        <dd class="col-10">@Html.DisplayFor(e => e.Genres)</dd>
+        @*<dd class="col-10">@Model.Genres</dd>*@
+
+        <br />
+        <hr />
+
+        <dt class="col-2">@Html.DisplayNameFor(e=> e.Description)</dt>
+        <dd class="col-10">@Html.DisplayFor(e=> e.Description)</dd>
+        @*<dd class="col-10">@Model.Description</dd>*@
+       
+        <br />
+        <hr />
+
+        <dt class="col-2">@Html.DisplayNameFor(e=>e.Duration)</dt>
+        <dd class="col-10">@Html.DisplayFor(e=>e.Duration)</dd>
+        @*<dd class="col-10">@Model.Duration</dd>*@
+
+        <br />
+        <hr />
+
+    </dl>
+
+    <div class="col-6">
+        <img src="@Model.ImageURL" style="width:50%;aspect-ratio:1/1" />
+    </div>
+</div>
+
+<form method="post" asp-controller="Film" asp-action="DeleteCurrent">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+</form>
+
+<a asp-controller="Film" asp-action="GetIndexView">Back to List</a>

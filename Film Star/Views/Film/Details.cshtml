@@ -1,0 +1,62 @@
+﻿@*
+    Details
+*@
+@model Film
+
+<h1 class="alert alert-info text-center">@Model.Name Details</h1>
+
+<div class="row">
+    <hr />
+    <dl class="row col-8">
+        
+        <dt class="col-2">@Html.DisplayNameFor(e=>e.Name)</dt>
+        <dd class="col-10">@Html.DisplayFor(e=>e.Name)</dd>
+        @*<dd class="col-10">@Model.Name</dd>*@
+
+        <br />
+        <hr />
+
+        <dt class="col-2">@Html.DisplayNameFor(e=> e.Genres)</dt>
+        <dd class="col-10">@Html.DisplayFor(e=> e.Genres)</dd>
+        @*<dd class="col-10">@Model.Genres</dd>*@
+
+        <br />
+        <hr />
+
+        <dt class="col-2">@Html.DisplayNameFor(e => e.Description)</dt>
+        <dd class="col-10">@Html.DisplayFor(e => e.Description)</dd>
+        @*<dd class="col-10">@Model.Description</dd>*@
+
+        <br />
+        <hr />
+
+        <dt class="col-2">@Html.DisplayNameFor(e=>e.Duration)</dt>
+        <dd class="col-10">@Html.DisplayFor(e=>e.Duration) min</dd>
+        @*<dd class="col-10">@Model.Duration</dd>*@
+
+    </dl>
+   
+
+    <div class="col-4">
+        <img src="@Model.ImageURL" style="width:80%;aspect-ratio:1/1" />
+    </div>
+
+</div>
+<div class="text-center">
+    <button onclick="redirectToLink()" class="btn btn-success">Watch</button>
+</div>
+<a asp-controller="Film" asp-action="GetIndexView">Back to List</a>
+
+
+
+<script>
+    function redirectToLink() {
+      var link = "@Model.Link";
+      window.location.href = link;
+    }
+</script>
+
+<hr />
+        <br />
+        <br />
+        

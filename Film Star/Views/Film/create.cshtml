@@ -1,0 +1,77 @@
+﻿@*
+    Create
+*@
+@model Film
+
+<h1 class="alert alert-warning text-center">
+    Add New Film
+</h1>
+
+<div class="row">
+    <form class="col-4" method="post" asp-controller="Film" asp-action="AddNew" enctype="multipart/form-data">
+
+        <div asp-validation-summary="All" class="text-danger"></div>
+
+        <div>
+            @*<label>@Html.DisplayNameFor(e=>e.Name)</label>*@
+            <label asp-for="Name"></label>
+            <input type="text" asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <div>
+            @*<label>@Html.DisplayNameFor(e=>e.Genres)</label>*@
+            <label asp-for="Genres"></label>
+            <input type="text" asp-for="Genres" class="form-control" />
+            <span asp-validation-for="Genres" class="text-danger"></span>
+        </div>
+
+        <div>
+            @*<label>@Html.DisplayNameFor(e=>e.Description)</label>*@
+            <label asp-for="Description"></label>
+            <textarea asp-for="Description" class="form-control">Description</textarea>
+            @*<input type="text" asp-for="Description" class="form-control" />*@
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+
+        <div>
+            @*<label>@Html.DisplayNameFor(e=>e.Duration)</label>*@
+            <label asp-for="Duration"></label>
+            <input asp-for="Duration" class="form-control" />
+            <span asp-validation-for="Duration" class="text-danger"></span>
+        </div>
+
+        <div>
+            <label asp-for="ImageURL"></label>
+            <input type="file" name="imageFormFile" id="imageFormFile"
+                                 accept=".png,.jpg" onchange="AddImage()" class="form-control" />
+            <span asp-validation-for="ImageURL"></span>
+        </div>
+
+        <div>
+            @*<label>@Html.DisplayNameFor(e=>e.Duration)</label>*@
+            <label asp-for="Link"></label>
+            <input asp-for="Link" class="form-control" />
+            <span asp-validation-for="Link" class="text-danger"></span>
+        </div>
+
+        <div>
+            <button type="submit" class="btn btn-primary mt-1">Add</button>
+            <a asp-controller="Employees" asp-action="GetIndexView">Back to List</a>
+        </div>
+    </form>
+
+    <div class="col-4">
+        <img src="" id="FilmImage" style="object-fit:contain" />
+    </div>
+
+</div>
+
+
+@section Scripts{
+    <script>
+        function AddImage() {
+            document.getElementById('FilmImage').src = window.URL.createObjectURL(document.getElementById('imageFormFile').files[0]);
+        }
+    </script>
+}
